@@ -2,6 +2,7 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RegisterResponse {
@@ -9,13 +10,11 @@ public class RegisterResponse {
     @JsonProperty("userID")
     private String userID;
     private String username;
-    private String token;
-    private String expires;
-    private String message;
+    private List<Object> books;
 
     public RegisterResponse() {}
 
-    public String getUserId() {
+    public String getUserID() {
         return userID;
     }
 
@@ -23,15 +22,8 @@ public class RegisterResponse {
         return username;
     }
 
-    public String getToken() {
-        return token;
+    public List<Object> getBooks() {
+        return books;
     }
 
-    public String getExpires() {
-        return expires;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }

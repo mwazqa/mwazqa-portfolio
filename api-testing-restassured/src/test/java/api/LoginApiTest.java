@@ -4,14 +4,14 @@ import static org.testng.Assert.*;
 import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
+import base.BaseTest;
 import models.LoginRequest;
 import models.LoginResponse;
 import utils.ConfigManager;
 
-import base.BaseTest;
 public class LoginApiTest extends BaseTest {
 
-    @Test(description = "Logowanie poprawnymi danymi")
+    @Test(description = "Verify that login with valid credentials returns a successful response and correct username")
     public void testValidLogin() {
         LoginRequest request = new LoginRequest(
                 ConfigManager.getUserName(),
@@ -28,11 +28,11 @@ public class LoginApiTest extends BaseTest {
                 .statusCode(200)
                 .extract()
                 .as(LoginResponse.class);
-//        assertNotNull(response.getToken(), "Token nie powinien być nullem");
-        assertEquals(response.getUsername(), ConfigManager.getUserName(), "Username się nie zgadza");
+//        assertNotNull(response.getToken(), "");
+        assertEquals(response.getUsername(), ConfigManager.getUserName(), "Username is matching");
     }
 
-    @Test(description = "Logowanie nieistniejącym użytkownikiem")
+    @Test(description = "Verify that login with non-existing/invalid credentials returns an unsuccessful authentication response")
     public void testInvalidLogin() {
         LoginRequest request = new LoginRequest("InvalidUserName", "InvalidPassword@123");
         given()

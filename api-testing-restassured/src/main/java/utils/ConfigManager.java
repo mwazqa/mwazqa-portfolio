@@ -9,11 +9,18 @@ public class ConfigManager {
     }
 
     public static String getUserName() {
-        return "ExampleUsername";
+        return "ExampleUserName";
     }
 
     public static String getPassword() {
         return "ExamplePassword@123";
     }
 
+    public static String getFirstName() {
+        return "Example First Name";
+    }
+
+    public static String getLastName() {
+        return "Example Last Name";
+    }
 }

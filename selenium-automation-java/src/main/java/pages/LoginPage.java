@@ -20,8 +20,8 @@ public class LoginPage {
     }
 
     public void login(String username, String password) {
-        driver.findElement(usernameField).sendKeys(username); // Wpisanie nazwy użytkownika
-        driver.findElement(passwordField).sendKeys(password); // Wpisanie hasła
+        driver.findElement(usernameField).sendKeys(username);
+        driver.findElement(passwordField).sendKeys(password);
         driver.findElement(loginButton).click();
     }
 

@@ -29,7 +29,7 @@ public class LoginUiTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    @Test(description = "Test logowania z prawidłowymi danymi")
+    @Test(description = "Login with valid credentials should redirect user to the profile page")
     public void testValidLogin() {
         loginPage.goToLoginPage();
         loginPage.login("testuser", "Test@123");
@@ -37,7 +37,7 @@ public class LoginUiTest {
         assertTrue(driver.getCurrentUrl().contains("profile"));
     }
 
-    @Test(description = "Test logowania z nieprawidłowymi danymi")
+    @Test(description = "Login with invalid credentials should display an authentication error message")
     public void testInvalidLogin() {
         loginPage.goToLoginPage();
         loginPage.login("invaliduser", "invalidpassword");
@@ -46,7 +46,7 @@ public class LoginUiTest {
         assertTrue(errorText.contains("Invalid username or password!"));
     }
 
-    @Test(description = "Test logowania z prawidłowymi i nieprawidłowymi danymi")
+    @Test(description = "User should be able to log in with valid credentials and receive an error when logging in with invalid credentials")
     public void testValidAndInvalidLogin() {
         loginPage.goToLoginPage();
         loginPage.login("testuser", "Test@123");

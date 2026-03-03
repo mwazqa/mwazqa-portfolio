@@ -49,10 +49,10 @@ jacoco.exec
 coverage/
 
 ############################
-# ALLURE (BARDZO WAŻNE)
+# ALLURE
 ############################
-allure-results/
-allure-report/
+**/allure-results/
+**/allure-report/
 
 ############################
 # LOGS
@@ -67,7 +67,7 @@ logs/
 /dist/
 
 ############################
-# NODE (jeśli kiedyś użyjesz np. do reportów)
+# NODE
 ############################
 /node_modules/
 /bower_components/
