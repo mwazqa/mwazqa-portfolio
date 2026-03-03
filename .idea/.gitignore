@@ -1,0 +1,109 @@
+############################
+# OS FILES
+############################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+############################
+# INTELLIJ IDEA
+############################
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+out/
+
+############################
+# OTHER IDEs
+############################
+.vscode/
+*.code-workspace
+
+############################
+# JAVA / JVM
+############################
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+############################
+# MAVEN
+############################
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+############################
+# TEST REPORTS / COVERAGE
+############################
+surefire-reports/
+failsafe-reports/
+jacoco.exec
+coverage/
+
+############################
+# ALLURE (BARDZO WAŻNE)
+############################
+allure-results/
+allure-report/
+
+############################
+# LOGS
+############################
+logs/
+*.log
+
+############################
+# BUILD DIRECTORIES
+############################
+/build/
+/dist/
+
+############################
+# NODE (jeśli kiedyś użyjesz np. do reportów)
+############################
+/node_modules/
+/bower_components/
+package-lock.json
+yarn.lock
+
+############################
+# ENV / SECRETS
+############################
+.env
+.env.*
+*.properties.local
+*.jks
+*.keystore
+*.p12
+*.pem
+*.pfx
+
+############################
+# TEMP FILES
+############################
+*.tmp
+*.temp
+*.bak
+*~
+.~*
+*.swp
+
+############################
+# ECLIPSE
+############################
+.classpath
+.project
+.settings/
+
+############################
+# VAGRANT
+############################
+.vagrant/

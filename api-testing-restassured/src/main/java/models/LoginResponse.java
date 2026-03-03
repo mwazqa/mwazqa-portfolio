@@ -13,9 +13,7 @@ public class LoginResponse {
     private String expires;
     private String message;
 
-    public LoginResponse() {
-        // Konstruktor bezargumentowy wymagany przez Jacksona
-    }
+    public LoginResponse() {}
 
     public String getUserId() {
         return userID;

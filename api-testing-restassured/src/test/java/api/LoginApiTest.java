@@ -17,7 +17,6 @@ public class LoginApiTest extends BaseTest {
                 ConfigManager.getUserName(),
                 ConfigManager.getPassword()
         );
-
         LoginResponse response = given()
                 .log().all()
                 .contentType(ContentType.JSON)
@@ -29,7 +28,6 @@ public class LoginApiTest extends BaseTest {
                 .statusCode(200)
                 .extract()
                 .as(LoginResponse.class);
-
 //        assertNotNull(response.getToken(), "Token nie powinien być nullem");
         assertEquals(response.getUsername(), ConfigManager.getUserName(), "Username się nie zgadza");
     }
@@ -37,7 +35,6 @@ public class LoginApiTest extends BaseTest {
     @Test(description = "Logowanie nieistniejącym użytkownikiem")
     public void testInvalidLogin() {
         LoginRequest request = new LoginRequest("InvalidUserName", "InvalidPassword@123");
-
         given()
                 .log().all()
                 .contentType(ContentType.JSON)
