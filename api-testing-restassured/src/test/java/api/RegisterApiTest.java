@@ -38,7 +38,7 @@ public class RegisterApiTest extends BaseTest {
         assertNotNull(response.getUserID(), "Created userID");
     }
 
-//    @Test(description = "already created user")
+    @Test(description = "Verify that registration fails when trying to create a user that already exists")
     public void testAlreadyCreatedUser() {
         RegisterRequest request = new RegisterRequest(
                 ConfigManager.getUserName(),

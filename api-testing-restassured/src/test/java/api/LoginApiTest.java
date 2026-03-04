@@ -61,6 +61,5 @@ public class LoginApiTest extends BaseTest {
         assertNull(response.getExpires(), "Null expires");
         assertEquals(response.getStatus(), "Failed");
         assertNotNull(response.getResult(), "User authorization failed.");
-
     }
 }
