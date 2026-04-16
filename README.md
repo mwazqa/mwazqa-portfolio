@@ -1,6 +1,6 @@
 # QA Engineer Portfolio
 
-## Overview
+### Overview
 This repository serves as a comprehensive showcase of my technical expertise in modern automation frameworks and strategic testing methodologies.
 
 My primary focus is on Quality Engineering as a value-driven process, ensuring reliability across the entire Software Development Life Cycle (SDLC). I emphasize shifting left—starting with rigorous documentation analysis and following through with robust API and UI automation to ensure a seamless user experience.
