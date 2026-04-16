@@ -1,3 +1,5 @@
+[![Website](https://img.shields.io/badge/Website-dragonflyqa.xyz-8a2be2?style=for-the-badge&labelColor=000000&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAxTDE1IDRMMTggMUwyMSA0TDE4IDdMMjEgMTBMMTggMTNMMTUgMTBMMTIgMTNMMTkgMjBMMTcgMjJMMTIgMTdMNyAyMkw1IDIwTDEyIDEzTDkgMTBMNiAxM0wzIDEwTDYgN0wzIDRMNiAxTDkgNEwxMiAxWiIvPjwvc3ZnPg==)](https://dragonflyqa.xyz)
+
 # QA Engineer Portfolio
 This repository serves as a comprehensive showcase of my technical expertise in modern automation frameworks and strategic testing methodologies.
 
