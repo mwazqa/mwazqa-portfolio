@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to my Quality Assurance portfolio. This repository serves as a comprehensive showcase of my technical expertise in modern automation frameworks and strategic testing methodologies.
+This repository serves as a comprehensive showcase of my technical expertise in modern automation frameworks and strategic testing methodologies.
 
 My primary focus is on Quality Engineering as a value-driven process, ensuring reliability across the entire Software Development Life Cycle (SDLC). I emphasize shifting left—starting with rigorous documentation analysis and following through with robust API and UI automation to ensure a seamless user experience.
 
@@ -52,7 +52,7 @@ My primary focus is on Quality Engineering as a value-driven process, ensuring r
 
 ---
 
-#TODO: CI/CD Integration (GitHub Actions) for automated test execution on code commits and pull requests.
+# TODO: CI/CD Integration (GitHub Actions) for automated test execution on code commits and pull requests.
 
 [//]: # (### Manual Testing Project)
 
