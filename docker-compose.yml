@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # MASTER - Manages the web UI and collects statistics from workers
+  locust-master:
+    build:
+      context: ./locust-performance-tests
+    container_name: locust-master
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./locust-performance-tests:/mnt/locust
+    # Run Locust in master mode pointing to the test file
+    command: -f /mnt/locust/locustfile.py --master
+    networks:
+      - locust-network
+
+  # WORKER - Executes the actual load and generates traffic
+  locust-worker:
+    build:
+      context: ./locust-performance-tests
+    depends_on:
+      - locust-master
+    volumes:
+      - ./locust-performance-tests:/mnt/locust
+    # Run Locust in worker mode and connect to the master host
+    command: -f /mnt/locust/locustfile.py --worker --master-host locust-master
+    networks:
+      - locust-network
+    # Define the number of worker instances for horizontal scaling
+    deploy:
+      replicas: 2
+
+networks:
+  locust-network:
+    driver: bridge

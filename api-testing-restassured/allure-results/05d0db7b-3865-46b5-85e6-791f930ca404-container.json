@@ -1,1 +1,0 @@
-{"uuid":"05d0db7b-3865-46b5-85e6-791f930ca404","name":"api.DemoQaLoginApiTest","children":["359e0f6e-3bdf-4c70-9e37-4457a3fd7d01"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1772215204870,"stop":1772215205085}],"afters":[],"start":1772215204849,"stop":1772215207074}

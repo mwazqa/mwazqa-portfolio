@@ -37,7 +37,8 @@ replay_pid*
 ############################
 # MAVEN
 ############################
-/target/
+target/
+*.class
 !.mvn/wrapper/maven-wrapper.jar
 
 ############################
@@ -51,8 +52,9 @@ coverage/
 ############################
 # ALLURE
 ############################
-**/allure-results/
-**/allure-report/
+.allure/
+allure-results/
+allure-report/
 
 ############################
 # LOGS
@@ -107,3 +109,34 @@ yarn.lock
 # VAGRANT
 ############################
 .vagrant/
+
+############################
+# PYHTHON VIRTUAL ENV
+############################
+.venv/
+venv/
+ENV/
+
+############################
+# PYTHON BYTECODE & CACHE
+############################
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+############################
+# LOCUST LOG FILES
+############################
+locust.log
+
+############################
+# DOCKER
+############################
+.docker/
+
+############################
+# SYSTEM FILES
+############################
+.DS_Store
+Thumbs.db

@@ -58,5 +58,4 @@ public class LinksApiTest extends BaseTest {
         assertEquals(response.getStatusCode(), 301, "Moved Permanently");
 //        assertEquals(response.getURL(), "demoqa.com", "Location header URL mismatch!"); // no URL in Location header
     }
-
 }
