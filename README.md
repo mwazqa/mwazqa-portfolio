@@ -18,7 +18,7 @@ My primary focus is on Quality Engineering as a value-driven process, ensuring r
 * **src/main/java/utils** – **Core Utilities** for handling environment-specific configurations, dynamic property loading, and endpoint management.
 * **src/test/java/api** – **Functional Test Suite** containing specific test cases that verify business workflows and API contracts.
 * **src/test/java/base** – **Test Infrastructure** providing centralized Request/Response Specifications and managing the TestNG lifecycle (Setup/Teardown).
-* **src/test/java/base** – **Configuration Hub** storing `allure.properties`, environment settings, and static test data.
+* **src/test/resources** – **Configuration Hub** storing `allure.properties`, environment settings, and static test data.
 
 #### Build & Output (Maven Target)
 * **target/** – The primary output directory for the Maven build process.
