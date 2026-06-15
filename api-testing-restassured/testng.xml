@@ -3,9 +3,11 @@
 <suite name="Allure API Suite">
     <test thread-count="5" name="API Tests">
         <classes>
+            <class name="api.BooksApiTest"/>
             <class name="api.LinksApiTest"/>
             <class name="api.LoginApiTest"/>
             <class name="api.RegisterApiTest"/>
+            <class name="api.UserProfileApiTest"/>
         </classes>
     </test>
 </suite>

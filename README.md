@@ -1,115 +1,199 @@
-[![Website](https://img.shields.io/badge/Website-dragonflyqa.xyz-8a2be2?style=for-the-badge&labelColor=000000&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAxTDE1IDRMMTggMUwyMSA0TDE4IDdMMjEgMTBMMTggMTNMMTUgMTBMMTIgMTNMMTkgMjBMMTcgMjJMMTIgMTdMNyAyMkw1IDIwTDEyIDEzTDkgMTBMNiAxM0wzIDEwTDYgN0wzIDRMNiAxTDkgNEwxMiAxWiIvPjwvc3ZnPg==)](https://dragonflyqa.xyz)
-
 # QA Engineer Portfolio
-This repository serves as a comprehensive showcase of my technical expertise in modern automation frameworks and strategic testing methodologies.
 
-My primary focus is on Quality Engineering as a value-driven process, ensuring reliability across the entire Software Development Life Cycle (SDLC). I emphasize shifting left—starting with rigorous documentation analysis and following through with robust API and UI automation to ensure a seamless user experience.
+Professional-grade repository demonstrating a practical, maintainable approach to automated testing across API, UI and performance layers. The project is split into focused modules so contributors can run, extend or reuse suites independently.
 
----
-
-### API Testing (RestAssured)
-**High-performance automated service layer verification.** This suite is designed to validate endpoint reliability, data integrity, and complex business logic by bypassing the graphical user interface.
-* **Performance & Efficiency:** Executes tests directly against the backend, providing rapid feedback on system stability.
-* **Comprehensive Validation:** Covers status codes, JSON schema validation, response headers, and payload content.
-* **Decoupled Architecture:** Built using a modular approach to ensure tests remain maintainable as the API evolves.
-
-#### Project Architecture & Directories
-* **src/main/java/models** – **POJO (Plain Old Java Objects)** models used for seamless serialization and deserialization of JSON requests and responses via Jackson.
-* **src/main/java/utils** – **Core Utilities** for handling environment-specific configurations, dynamic property loading, and endpoint management.
-* **src/test/java/api** – **Functional Test Suite** containing specific test cases that verify business workflows and API contracts.
-* **src/test/java/base** – **Test Infrastructure** providing centralized Request/Response Specifications and managing the TestNG lifecycle (Setup/Teardown).
-* **src/test/resources** – **Configuration Hub** storing `allure.properties`, environment settings, and static test data.
-
-#### Build & Output (Maven Target)
-* **target/** – The primary output directory for the Maven build process.
-    * **allure-results** – Raw JSON and metadata files generated during test execution, used to build interactive Allure reports.
-    * **surefire-reports** – Default TestNG execution reports and XML results.
-    * **classes / test-classes** – Compiled bytecode for application and test logic.
-* **pom.xml** – **Project Object Model** – the heart of the project, managing dependencies (Rest-Assured, Jackson, Allure) and build orchestration.
-* **testng.xml** – **Test Suite Orchestrator** defining execution order, test grouping, and parallelization strategy.
+Table of Contents
+- Overview
+- Project structure (short tree)
+- Prerequisites
+- Quick start (clone & run)
+- Per-module details and run commands
+  - Playwright (TypeScript)
+  - API tests (RestAssured, Java / Maven)
+  - Selenium UI (Java / Maven)
+  - Performance (Locust / Python)
+- Reporting
+- Recommended versions
+- Contributing
 
 ---
 
-### Performance Testing (Locust)
-**Scalable load and stress testing infrastructure.** This project uses an event-based approach to simulate thousands of concurrent users, pinpointing system bottlenecks and measuring response stability under pressure.
-* **High Scalability:** Distributed architecture utilizing Docker containers (Master-Worker) to generate massive traffic.
-* **Real-world Simulation:** Uses dynamic data injection to mimic authentic user behavior and avoid server-side caching.
-* **Python-based Logic:** Leverage the full power of Python to create complex testing scenarios and asynchronous requests.
+Overview
+This repository collects automated test suites and sample utilities used to validate an example application (https://demoqa.com). Each subproject is independent and contains its own configuration, dependencies and run instructions.
 
+Project structure (top-level)
+```
+mwazqa-portfolio/
+├─ api-testing-restassured/      # Java Maven API tests (RestAssured)
+├─ locust-performance-tests/     # Load / performance tests (Locust)
+├─ playwright-tests-ts/          # Playwright tests in TypeScript (API + UI)
+├─ selenium-automation-java/     # Selenium-based UI tests (Java)
+├─ docker-compose.yml
+└─ README.md
+```
 
-#### Project Architecture & Directories
-* **tasks/** – **Task Definition Hub** containing modular Python scripts (`api_tasks.py`, `ui_tasks.py`) that define specific user actions and workflows.
-* **data/** – **Test Data Repository** storing static resources like books.json used for parameterizing requests and payload injection.
-* **locustfile.py** – **Main Entry Point** that orchestrates the test execution, defining user classes, wait times, and the distribution of tasks.
-* **.venv/** – **Isolated Virtual Environment** ensuring all Python dependencies are managed separately from the global system.
-* **requirements.txt** – **Dependency Manifest** listing required libraries such as `locust`, `faker`, and `beautifulsoup4` with strict versioning.
+Each test module has its own README-style instructions below. Use the Quick start for the fastest path to running tests locally.
 
-#### Infrastructure & Deployment (Docker)
-* **Dockerfile** – **Container Blueprint** that packages the Python environment, dependencies, and scripts into a portable image.
-* **docker-compose.yml** – **Orchestration Layer** (located in the root) that manages the Master and Worker nodes, allowing for instant horizontal scaling.
-* **locust-performance-tests.iml** – **JetBrains Configuration** file for project module management within the IntelliJ/PyCharm ecosystem.
+Prerequisites
+- Git (to clone the repository)
+- Node.js (LTS recommended, e.g. 18+) and npm
+- Java JDK 11+ (for Maven-based projects)
+- Python 3.9+ and pip (for Locust tests)
+- Docker & Docker Compose (optional — recommended for running Locust in distributed mode)
+
+Note: The commands below assume you use Windows PowerShell (project owner environment). Replace activation commands with the equivalent for your shell (bash, zsh) if needed.
+
+Quick start (clone & run)
+1. Clone the repository:
+
+```powershell
+git clone https://github.com/your-username/mwazqa-portfolio.git
+cd mwazqa-portfolio
+```
+
+2. Playwright (TypeScript) — install dependencies and run tests:
+
+[![Run Playwright](https://img.shields.io/badge/Run-Playwright-0047AB?style=flat&logo=playwright)](#playwright-tests-ts)
+
+```powershell
+cd playwright-tests-ts
+npm ci
+# install browsers Playwright requires
+npx playwright install --with-deps
+
+# run all tests
+npx playwright test
+
+# run a single test file (example)
+npx playwright test tests/ui/login.spec.ts
+
+# open the HTML report generated by Playwright
+npx playwright show-report
+```
+
+3. API tests (RestAssured, Maven):
+
+[![Run API Java](https://img.shields.io/badge/Run-API--Java-6DB33F?style=flat&logo=java)](#api-testing-restassured)
+
+```powershell
+cd api-testing-restassured
+# run the full test suite with Maven
+mvn clean test
+
+# generate and serve Allure report (if Allure CLI is installed)
+# mvn allure:report && allure open
+# or use: allure serve target/allure-results
+```
+
+4. Selenium UI (Java, Maven):
+
+[![Run Selenium](https://img.shields.io/badge/Run-Selenium-2D9BF0?style=flat&logo=selenium)](#selenium-automation-java)
+
+```powershell
+cd selenium-automation-java
+mvn clean test
+
+# open Allure results if produced
+# allure serve target/allure-results
+```
+
+5. Locust performance tests (Python):
+
+[![Run Locust](https://img.shields.io/badge/Run-Locust-FF6C37?style=flat&logo=locust)](#locust-performance-tests)
+
+```powershell
+cd locust-performance-tests
+# create a virtual environment (PowerShell)
+python -m venv .venv
+. .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+
+# run Locust in single-process mode (web UI on http://localhost:8089)
+locust -f locustfile.py --host https://demoqa.com
+
+# or run via Docker Compose to scale workers (requires Docker)
+docker-compose up --build
+```
+
+Per-module details
+
+Playwright (playwright-tests-ts)
+- Location: `playwright-tests-ts/`
+- Purpose: Unified API and UI tests written in TypeScript using Playwright Test.
+- Key files:
+  - `playwright.config.ts` — Playwright configuration and reporters (Allure, HTML)
+  - `src/pages/` — Page objects (POM) used by UI tests
+  - `src/helpers/api-helper.ts` — thin wrapper around Playwright's APIRequestContext
+  - `tests/` — test suites (api/ and ui/)
+
+Recommended commands
+```powershell
+npm ci
+npx playwright install
+npx playwright test
+```
+
+API tests (api-testing-restassured)
+- Location: `api-testing-restassured/`
+- Purpose: Java-based API verification using RestAssured and TestNG.
+- Key files:
+  - `pom.xml` — dependency and plugin configuration
+  - `src/test/java/` — test classes and utilities
+
+Run
+```powershell
+cd api-testing-restassured
+mvn clean test
+```
+
+Selenium UI (selenium-automation-java)
+- Location: `selenium-automation-java/`
+- Purpose: Legacy Java Selenium tests with Page Object Model and TestNG.
+
+Run
+```powershell
+cd selenium-automation-java
+mvn clean test
+```
+
+Performance (Locust)
+- Location: `locust-performance-tests/`
+- Purpose: Load testing using Locust with modular task files in `tasks/` and data in `data/`.
+
+Run (single-machine)
+```powershell
+cd locust-performance-tests
+. .venv\Scripts\Activate.ps1
+locust -f locustfile.py --host https://demoqa.com
+```
+
+Run (Docker-compose)
+```powershell
+docker-compose up --build
+```
+
+Reporting
+- Playwright: HTML report via `npx playwright show-report`; Allure through `allure-playwright` reporter (requires Allure CLI for serve/generate).
+- Java (RestAssured / Selenium): Allure results are typically in `target/allure-results`; use `allure serve target/allure-results` to view.
+
+Recommended versions
+- Node.js: 18.x LTS or newer
+- npm: 9.x or newer
+- Java: JDK 11+
+- Python: 3.9+
+- Playwright: use project-local version (installed via npm)
+
+Contributing
+- Fork the repository and create feature branches per module.
+- Keep tests isolated — API tests should not depend on UI state unless explicitly designed.
+- Open a pull request with a clear description and add relevant test results (screenshots, Allure attachments) when applicable.
+
+Contact / Notes
+- The example base URL and many default credentials are defined inside the respective test fixtures and utilities (e.g. `playwright-tests-ts/src/utils/config-manager.ts`). Adjust environment variables (for CI) via `API_BASE_URL` or project-specific configuration.
 
 ---
 
-# TODO: CI/CD Integration (GitHub Actions) for automated test execution on code commits and pull requests.
+If you want, I can also:
+- Add a short `CONTRIBUTING.md` and per-module `README.md` files.
+- Create GitHub Actions workflow templates to run the Playwright and Maven suites on push and PR.
 
-[//]: # (### Manual Testing Project)
-
-[//]: # (Focuses on the testing process and documentation—the groundwork laid before the first line of test code is written.)
-
-[//]: # ()
-[//]: # (* **TestPlan** – Test strategy, scope definition, and risk-based approach.)
-
-[//]: # ()
-[//]: # (* **TestCases** – Structured test scenarios &#40;.xlsx / .md&#41; with clear steps and expected results.)
-
-[//]: # ()
-[//]: # (* **BugReports** – Professional defect reports featuring screenshots, logs, and reproduction steps.)
-
-[//]: # ()
-[//]: # (* **Checklists** – High-level verification sets for Smoke and Regression testing.)
-
-[//]: # ()
-[//]: # (---)
-
-[//]: # ()
-[//]: # (### Selenium Automation Java)
-
-[//]: # (A comprehensive UI automation framework built with clean code principles and scalability in mind.)
-
-[//]: # ()
-[//]: # (* **src/main/java/pages** – Page Object Model &#40;POM&#41; implementation for improved maintainability.)
-
-[//]: # ()
-[//]: # (* **src/test/java/ui** – Test classes and assertions.)
-
-[//]: # ()
-[//]: # (* **driver** – Browser binaries supported by the project.)
-
-[//]: # ()
-[//]: # (* **allure-results** – Raw data used to generate visual, stakeholder-friendly reports.)
-
-[//]: # ()
-[//]: # (* **.github/workflows** – CI/CD pipeline for automated test execution on every push.)
-
-[//]: # ()
-[//]: # (* **pom.xml** – Project configuration and reporting plugins.)
-
-[//]: # ()
-[//]: # (* **README.md** – Technical requirements and setup guide.)
-
-[//]: # ()
-[//]: # (---)
-
-[//]: # ()
-[//]: # (### SQL / Database Testing)
-
-[//]: # (Data integrity verification and backend testing performed directly on the database.)
-
-[//]: # ()
-[//]: # (* **queries** – SQL scripts used to validate data changes after UI/API actions.)
-
-[//]: # (* **README.md** – Database structure overview and examples of database test scenarios.)
-
-[//]: # ()
-[//]: # (Each of the modules above is ready for further expansion with new test cases and integrations.)
