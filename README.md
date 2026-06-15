@@ -194,4 +194,3 @@ Contact / Notes
 ---
 [//]: # (- Add a short `CONTRIBUTING.md` and per-module `README.md` files.)
 [//]: # (- Create GitHub Actions workflow templates to run the Playwright and Maven suites on push and PR.)
-
