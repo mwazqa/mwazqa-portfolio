@@ -1,4 +1,4 @@
-# QA Engineer Portfolio
+[![Website](https://img.shields.io/badge/Website-dragonflyqa.xyz-8a2be2?style=for-the-badge&labelColor=000000&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAxTDE1IDRMMTggMUwyMSA0TDE4IDdMMjEgMTBMMTggMTNMMTUgMTBMMTIgMTNMMTkgMjBMMTcgMjJMMTIgMTdMNyAyMkw1IDIwTDEyIDEzTDkgMTBMNiAxM0wzIDEwTDYgN0wzIDRMNiAxTDkgNEwxMiAxWiIvPjwvc3ZnPg==)](https://dragonflyqa.xyz)
 
 Professional-grade repository demonstrating a practical, maintainable approach to automated testing across API, UI and performance layers. The project is split into focused modules so contributors can run, extend or reuse suites independently.
 
@@ -192,8 +192,6 @@ Contact / Notes
 - The example base URL and many default credentials are defined inside the respective test fixtures and utilities (e.g. `playwright-tests-ts/src/utils/config-manager.ts`). Adjust environment variables (for CI) via `API_BASE_URL` or project-specific configuration.
 
 ---
-
-If you want, I can also:
-- Add a short `CONTRIBUTING.md` and per-module `README.md` files.
-- Create GitHub Actions workflow templates to run the Playwright and Maven suites on push and PR.
+[//]: # (- Add a short `CONTRIBUTING.md` and per-module `README.md` files.)
+[//]: # (- Create GitHub Actions workflow templates to run the Playwright and Maven suites on push and PR.)
 
